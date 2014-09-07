@@ -8,6 +8,6 @@ http://tug.ctan.org/tex-archive/macros/latex/contrib/moderncv.zip
 
 Unzip moderncv, modercv and templates is included.
 
-Put my tow resumes into modercv root directory.
+Put my two resumes into modercv root directory.
 
 Use a tool to build these tex files. In fedora, I use geany editor.
