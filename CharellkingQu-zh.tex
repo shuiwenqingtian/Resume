@@ -1,0 +1,116 @@
+%% start of file `template-zh.tex'.
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+\documentclass[11pt,a4paper,sans]{moderncv}   % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+% moderncv 主题
+\moderncvstyle{casual}                        % 选项参数是 ‘casual’, ‘classic’, ‘oldstyle’ 和 ’banking’
+\moderncvcolor{blue}                          % 选项参数是 ‘blue’ (默认)、‘orange’、‘green’、‘red’、‘purple’ 和 ‘grey’
+%\nopagenumbers{}                             % 消除注释以取消自动页码生成功能
+
+% 字符编码
+\usepackage[utf8]{inputenc}                   % 替换你正在使用的编码
+\usepackage{CJKutf8}
+
+% 调整页面出血
+\usepackage[scale=0.75]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}           % 如果你希望改变日期栏的宽度
+
+% 个人信息
+\name{瞿兆静}{}
+\address{上海市徐汇区钦州北路}{}            % 可选项、如不需要可删除本行
+\phone[mobile]{18616263538}              % 可选项、如不需要可删除本行
+\email{charellkingqu@163.com}                    % 可选项、如不需要可删除本行
+\homepage{charellking.github.io}                  % 可选项、如不需要可删除本行
+\social[github]{CharellKing}                              % optional, remove / comment the line if not wanted
+% 显示索引号;仅用于在简历中使用了引言
+%\makeatletter
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%\makeatother
+
+% 分类索引
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            内容
+%----------------------------------------------------------------------------------
+\begin{document}
+\begin{CJK}{UTF8}{gbsn}                       % 详情参阅CJK文件包
+\maketitle
+
+\section{求职意向}
+\cventry{}{Unix C++ 软件工程师}{}{}{}{}  % 第3到第6编码可留白
+
+\section{教育背景}
+\cventry{2008 -- 2012}{学士学位}{湖北经济学院法商学院}{武汉}{\textit{软件工程}}{}  % 第3到第6编码可留白
+
+\section{竞技奖项}
+\cventry{}{第一届“国信蓝点杯”全国软件专业人才设计与开发大赛总决赛二等奖}{}{}{}{}  % 第3到第6编码可留白
+
+
+\section{工作背景}
+\subsection{专业}
+\cventry{2012 -- 2013}{Unix C++ 软件开发}{亿迅科技有限公司}{广州}{}{参与开发佣金代理商系统\newline{}%
+工作内容:%
+\begin{itemize}%
+\item 实现共享内存容器，例如array，queue，map。工作的重心主要是提供良好的接口给上层；由于这个系统是多进程，使用信号量来实现读写锁， 从而用读写锁来实现异步。
+\item 重构代码。由于整个项目的时间比较仓卒，系统有很多不完善的地方，检查代码，让代码的复用度更加高:
+\item 开发外部的工具来管理共享内存或测试极端情况。这个工具用来创建、删除共享内存；统计共享内存的占有率；占用、释放锁资源来测试系统的读写锁；导入、导出数据从文件到内存或者从内存到数据库。
+\end{itemize}}
+\cventry{2013 -- 2014}{Unix C++ 软件开发}{旗开软件有限公司}{上海}{}{参与游戏服务器开发并且维护旧的系统\newline{}%
+工作内容:%
+\begin{itemize}%
+\item 完成服务器的模块。服务器是以插件的模式进行工作的，这样整个系统的灵活性比较高；当系统启动的时候，每个模块会从xml文件加载自己所需的全局模板数据；当客户端登陆的时候，监听该事件的模块会接收到登陆事件，处理登陆时所做的操作，同时采用异步线程来加载登陆用户数据。用户在游戏的过程中，客户端和服务端定义了一致的消息协议来进行数据交流。系统运行过程中会定期触发事件，主要用到定时器。玩家下线之后，利用LRU的机制，将玩家的数据从内存中释放。整个服务端被客户端消息、异步事件所驱动。
+\item 维护旧有的系统。当服务器崩溃或者数据出现异常，服务器的运行日志很关键，能够查出代bug所处位置；同时还可以通过服务器崩溃的core文件来gdb，直接查找崩溃的原因（崩溃的大部分原因是访问了空指针或者野指针）。其次还会做一些sql语句的优化，在旧有的游戏中为节省开发事件使用了大量的存储过程，当用户的数量达到一定量的时候，这些存储过程会执行很慢，尽量减少表的关联，降低时间复杂度。新的游戏引入了cache，摒弃了存储过程，就不会有这样的问题。
+\end{itemize}}
+
+\section{开源项目}
+%\subsection{}
+\cventry{}{TimePass Library}{https://github.com/CharellKing/TimePass}{}{}{
+\begin{itemize}%
+\item TimePass是一个基于posix协议的库，整个项目的构建使用cmake工具，其正处于研发中。这个库的主要目的是基于linux最基础的API，为开发人员提供易于调用的数据结构和常用模型的接口。目前实现了一些共享内存容器，有array,list, doublylist, hashlist, queue(circular queue), map, set, multimap, multiset, hashmap, hashset. 这些容器的接口很接近STL库，例如它们也采用了迭代器。在后期会加入“lock”、“model”、“sock”。 "lock"模块会提供mutex，sem， mutex-read-write locker, sem-read-write locker； "model"将会包括生产者消费者的多种模；"sock"模块会提供epoll和select模型的封装。
+\end{itemize}}
+
+\cventry{}{sql派发工具}{https://github.com/CharellKing/DispatchTable}{}{}{
+\begin{itemize}%
+\item 团队成员每人会布置一套环境，供自己独立的开发，运行，测试。为了维护成员数据库的统一，每个人在开发的过程中，新建或修改表格结构，必须也往其他成员的数据库中手动新建修改表格。这款派发sql的工具，采用python开发而成，执行程序，将会在各个开发成员的数据库里执行修改的sql文件，并且会生成执行的log文件，当下次执行派发工具的时候，会将当前时间和sql文件的修改时间以及log文件记录的sql文件执行时间做对比来决定是否执行sql文件。
+\end{itemize}}
+\cventry{}{自动生成日志代码工具}{https://github.com/CharellKing/DispatchTable}{}{}{
+\begin{itemize}%
+\item 面对大量的log表格，要写很多struct，并且构建很多insert-sql语句，实在是一件繁琐的事情。自动生成日志代码工具，采用python开发而成，根据表格文件，自动生成struct代码，并且构建insert-sql语句，这样可以减轻繁琐的工作以及减少因繁琐产生的错误。
+\end{itemize}}
+
+\section{语言技能}
+\cvitemwithcomment{C++}{熟悉}{能够实现常见的数据结构和算法}
+\cvitemwithcomment{Python}{熟悉}{实现自动化工具}
+\cvitemwithcomment{Dot language}{熟悉}{用来建模，将复杂的数据结构用图片展示出来}
+
+\section{个人兴趣}
+\cvitem{读书}{\small 历史和小说}
+\cvitem{音乐}{\small beyond乐队和古典音乐}
+\cvitem{运动}{\small 乒乓球，足球，游泳}
+
+% 来自BibTeX文件但不使用multibib包的出版物
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}% BibTeX的数字标签
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{publications}                    % 'publications' 是BibTeX文件的文件名
+
+% 来自BibTeX文件并使用multibib包的出版物
+%\section{出版物}
+%\nocitebook{book1,book2}
+%\bibliographystylebook{plain}
+%\bibliographybook{publications}               % 'publications' 是BibTeX文件的文件名
+%\nocitemisc{misc1,misc2,misc3}
+%\bibliographystylemisc{plain}
+%\bibliographymisc{publications}               % 'publications' 是BibTeX文件的文件名
+
+\clearpage\end{CJK}
+\end{document}
+
+%% 文件结尾 `template-zh.tex'.

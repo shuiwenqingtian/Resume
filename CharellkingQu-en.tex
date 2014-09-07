@@ -1,0 +1,106 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+\documentclass[11pt,a4paper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+% moderncv themes
+\moderncvstyle{casual}                             % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue}                               % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+%\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+% adjust the page margins
+\usepackage[scale=0.75]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+% personal data
+\name{Zhaojing}{Qu}
+\address{Qinzhou North Street}{Xuhui District}{Shanghai}	% optional, remove / comment the line if not wanted; the "postcode city" and "country" arguments can be omitted or provided empty%
+\phone[mobile]{18616263538}                   % optional, remove / comment the line if not wanted; the optional "type" of the phone can be "mobile" (default), "fixed" or "fax"
+\email{charellkingqu@163.com}                               % optional, remove / comment the line if not wanted
+\homepage{charellking.github.io}                         % optional, remove / comment the line if not wanted
+\social[github]{CharellKing}                              % optional, remove / comment the line if not wanted
+
+% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
+%\makeatletter
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%\makeatother
+%\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
+
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+%\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
+%-----       resume       ---------------------------------------------------------
+\makecvtitle
+
+\section{Job Objective}
+\cventry{}{Unix C++ Software Engineer}{}{}{}{}  % arguments 3 to 6 can be left empty
+
+\section{Education}
+\cventry{2008--2012}{bachelor degree}{Hubei University of Economics Law\&Business College}{Wuhan}{\textit{Software Engineering}}{}  % arguments 3 to 6 can be left empty
+
+\section{Competition}
+\cventry {}{Won the second prize in the "Guoxin Landian" national designer software final competition in 2011 }{}{}{}{}
+
+\section{Experience}
+\cventry{2012--2013}{Unix C++ Programmer}{Yixun Technology Co., Ltd.}{Guangzhou}{}{Attend the development of commission agent system.\newline{}%
+Detailed achievements:%
+\begin{itemize}%
+\item Implement the shared memory containers, such as queue, array and map. The key is to focus on the good interface privided to upper layer. As this system is multi-process, read-write locker is implemented by sem api to make system work asynchronously.
+\item Rebuild the code. To accept the project in haste, the system has some flaw, I must review codes to reuse some module as possible.
+\item Develop the external tools to manage shared memory. The tools is to create shared memory, delete shared momory, do statistics on shared memory (used bytes, capacity etc), import and export data from database to memory or file to memory.
+\end{itemize}}
+
+\cventry{2013--2014}{Unix C++ Programmer}{Qikai Software Co., Ltd.}{Shanghai}{}{Attend the game server develepment and maintain the older system \newline{}%
+Detailed achievements:%
+\begin{itemize}%
+\item Finish the plug-in module. Our server is made by many plug-in modules to make system more flexible. when the server is launched, all the modules load global template data from xml files. When a client login, the modules which listen the login-event call functions in each modules, also create a thread to load user data asynchronously. When user plays game, the client communicates with server as some consistent message protocal. During the system launching, some timer events are trigered. When user is offline, user data is realeased with LRU mechanism. All the system is driven by client message and asynchronous event.
+\item Maintain the old system. when server-crash and data-exception appears, the system's running log is very important to position bugs, also  the crash-reasons is found by core file combined with gdb (almost crash is caused by null pointer or wild pointer). In the old system, as using much stored procedure, the procedure is executed slowly when combine many tables, so combine-table amount should be reduced in procedure as possible; new game' server use cache to avoid the problem.
+\end{itemize}}
+ 
+\section{Open Source}
+%\subsection{TimePass Library}
+
+\cventry{}{TimePass Library}{https://github.com/CharellKing/TimePass}{}{}{
+\begin{itemize}%
+\item "TimePass" is a posix-based library. It is being developed and built by cmake tool. Now I has implemented shared memory containers such as array, list, doublylist, hashlist, queue(circular queue), map, set, multimap, multiset, hashmap, hashset. It's similar with STL library on almost interface such as iterator. Some modules will come as sooner or later, such as locker, model, sock; The locker part will include mutex, sem, mutex-read-write locker, sem-read-write locker; The model will include producer-consumer models; The socket will implete some models such as epoll-model, select-model.  
+\end{itemize}}
+
+\cventry{}{Sql Dispacher}{https://github.com/CharellKing/DispatchTable}{}{}{
+\begin{itemize}%
+\item To make every developer's database consistency, I make a tool to dispatch the sql to all the other teamers' database by using python. After launching the tools, a log file is generated to take in sql file executing time. The tool can recognize and execute the newer modified sql file by comparing the current time with the sql file modified time and the executing sql file time which taken in log file.
+\end{itemize}}
+
+\cventry{}{Log Code Generator}{https://github.com/CharellKing/AutoLogCode}{}{}{
+\begin{itemize}%
+\item It's a repetitive and boring thing to finish some structs and make some insert-sql statements about many log tables. So I use python to generate them according to a table-fields file to ease the boring thing and reduces that chance of errors. 
+\end{itemize}}
+
+\section{Languages}
+\cvitemwithcomment{C++}{familiar}{can implement general data structure}
+\cvitemwithcomment{Python}{familiar}{use it to complete automatic tools}
+\cvitemwithcomment{Dot language}{familiar}{build models such as turning a data structure into picture}
+
+\section{Interests}
+\cvitem{Reading}{history, novel}
+\cvitem{Music}{beyond band, classic music}
+\cvitem{Sports}{ping-pong, football, swimming}
+
+
+\end{document}
+\newpage
