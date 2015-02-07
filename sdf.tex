@@ -1,0 +1,113 @@
+%% start of file `template-zh.tex'.
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+\documentclass[11pt,a4paper,sans]{moderncv}   % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+% moderncv 主题
+\moderncvstyle{classic}                        % 选项参数是 ‘casual’, ‘classic’, ‘oldstyle’ 和 ’banking’
+\moderncvcolor{green}                          % 选项参数是 ‘blue’ (默认)、‘orange’、‘green’、‘red’、‘purple’ 和 ‘grey’
+%\nopagenumbers{}                             % 消除注释以取消自动页码生成功能
+
+% 字符编码
+\usepackage[utf8]{inputenc}                   % 替换你正在使用的编码
+\usepackage{CJKutf8}
+
+% 调整页面出血
+\usepackage[scale=0.75]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}           % 如果你希望改变日期栏的宽度
+
+% 个人信息
+\name{王海棠}{}
+\address{浙江}{绍兴诸暨市}            % 可选项、如不需要可删除本行
+\phone[mobile]{13564505362}              % 可选项、如不需要可删除本行
+\email{wanghaitang901@163.com}                    % 可选项、如不需要可删除本行
+%\homepage{charellking.github.io}                  % 可选项、如不需要可删除本行
+%\social[github]{CharellKing}                              % optional, remove / comment the line if not wanted
+% 显示索引号;仅用于在简历中使用了引言
+%\makeatletter
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%\makeatother
+
+% 分类索引
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            内容
+%----------------------------------------------------------------------------------
+\begin{document}
+\begin{CJK}{UTF8}{gbsn}                       % 详情参阅CJK文件包
+\maketitle
+
+\section{求职意向}
+\cventry{}{ 嵌入式 C 软件工程师}{}{}{}{}  % 第3到第6编码可留白
+
+\section{教育背景}
+\cventry{2009 -- 2013}{学士学位}{宁夏理工学院}{}{\textit{电子信息工程}}{}  % 第3到第6编码可留白
+
+%\section{竞技奖项}
+%\cventry{}{第一届“国信蓝点杯”全国软件专业人才设计与开发大赛总决赛二等奖}{}{}{}{}  % 第3到第6编码可留白
+\section{专业技能}
+\cvitemwithcomment{嵌入式RTOS}{熟悉}{Itron OS Task stack设计、Linux 文件系统移植}
+\cvitemwithcomment{嵌入式总线}{熟悉}{UART、I2C、SPI、I2S接口}
+\cvitemwithcomment{Linux内核}{了解}{中断处理机制、内存管理、进程调度等 }
+\cvitemwithcomment{编译工具}{熟悉}{GCC、 makefile、基本command line 操作命令 }
+\cvitemwithcomment{英文}{CET-4}{熟练查看英文数据手册 、以及驱动API}
+\cvitemwithcomment{编程语言}{C、C++}{了解面向对象的思维方式，了解C++语言、了解JAVA语言}
+\section{工作背景}
+%\subsection{专业}
+\cventry{2013 -- 2015}{嵌入式 C 软件开发}{上海先锋商泰电子技术有限公司}{}{}{参与开发车载影音娱乐系统\newline{}%
+工作内容:主要负责汽车娱乐系统平台中驱动层的数据的采集，并且向APL层提供接口%
+\begin{itemize}%
+\item 完成内核中断的相关机能以及Task Stack相关机能的测试，完成项目的硬件相关的综合测试，保证CPU使用率、Task Stack准确分配。
+\item 重构底层SPI、UART驱动代码。由于整个项目的时间比较仓卒，系统有很多不完善的地方，检查代码，让代码的复用度更加高:
+\item 通过查看SOC 数据手册，完成项目前期的功能预估以及数据通信的正确的方案检讨。
+\item 根据硬件工程师的方案，完成芯片的上电时序、掉电时序等等方案的检讨实现
+\end{itemize}}
+\cventry{2012-- 2013}{嵌入式 C 软件开发}{毕业设计项目}{}{}{无线视频传输控制系统\newline{}%
+工作内容:	%
+\begin{itemize}%
+\item 本系统视频图像的采集、编码、传输，视频采样是基于V4L2接口实现，用SOCKET生成网络套接字，基于UDP传输协议，系统采用基于MPEG-4编码压缩算法，此系统分为服务端和客户端两个部分，其中服务端由ARM作为主控，以自定义Uboot引导启动，操作系统采用移植后的嵌入式Linux系统OPENWRT实现，客户端基于 Android 系统的设备，保证视频图像的实时传输和对云台、温控设备、烟雾探头等其他外围设备的控制。
+\item 服务器端的Uboot引导、Linux内核移植。
+\item 最小根文件系统的制作、利用BusyBox制作一个简单的文件系统
+\end{itemize}}
+\cventry{2011-- 2012}{嵌入式 C 软件开发}{实验室项目}{}{}{STC11F32XE单片机多路舵机控制系统的设计\newline{}%
+工作内容:	%
+\begin{itemize}%
+\item 本系统采用的STC11F32XE单片机与电源管理模块，由电源管理模块单独为六路舵机供电，防止出现因舵机较多而产生对单片机供电不稳定的现象发生，舵机的控制信号为周期是20ms 的脉宽调制（PWM）信号，其中脉冲宽度从0.5ms-2.5ms，相对应舵盘的位置为0－180 度，呈线性变化。本系统为遥控机器人的子模块，以此还需要其他模块的人员共同合作完成。
+\item 电源管理模块的设计与实现，舵机控制信号的产生。
+\item 提供稳定的电源给机器人各个模块。
+\end{itemize}}
+
+
+
+
+\section{个人兴趣}
+\cvitem{互联网}{\small CSDN，Github}
+\cvitem{读书}{\small 心理学、哲学初级读物}
+\cvitem{音乐}{\small 古典音乐和乡村音乐}
+\cvitem{运动}{\small 乒乓球，游泳}
+
+% 来自BibTeX文件但不使用multibib包的出版物
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}% BibTeX的数字标签
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{publications}                    % 'publications' 是BibTeX文件的文件名
+
+% 来自BibTeX文件并使用multibib包的出版物
+%\section{出版物}
+%\nocitebook{book1,book2}
+%\bibliographystylebook{plain}
+%\bibliographybook{publications}               % 'publications' 是BibTeX文件的文件名
+%\nocitemisc{misc1,misc2,misc3}
+%\bibliographystylemisc{plain}
+%\bibliographymisc{publications}               % 'publications' 是BibTeX文件的文件名
+
+\clearpage\end{CJK}
+\end{document}
+
+%% 文件结尾 `template-zh.tex'.
